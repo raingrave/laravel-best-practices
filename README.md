@@ -98,7 +98,7 @@ public function index()
         }])
         ->get();
 
-    return view('index', ['clients' => $clients]);
+    return view('index', compact('clients'));
 }
 ```
 
@@ -107,7 +107,9 @@ Bom:
 ```php
 public function index()
 {
-    return view('index', ['clients' => $this->client->getWithNewOrders()]);
+    $clients = $this->client->getWithNewOrders();
+    
+    return view('index', compact('clients'));
 }
 
 class Client extends Model
